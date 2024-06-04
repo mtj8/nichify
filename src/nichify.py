@@ -26,7 +26,6 @@ def nichify(artist_id):
 
 def niche_finder(sp, artist, artist_list, min_follower_threshold):
     # if artist is already in list, return
-    # TODO: implement return as dict of id, artist name, followers, genres, etc.
     artist_result = sp.artist(artist)
     for artist_entry in artist_list:
         if artist_result['id'] == artist_entry['id']:
@@ -37,6 +36,7 @@ def niche_finder(sp, artist, artist_list, min_follower_threshold):
         print('Mythical pull!')
         # artist_dossier(artist_result)
         return artist_list
+    
     else:
         artist_list += [artist_result]
         related_artists_results = sp.artist_related_artists(artist)
