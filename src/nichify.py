@@ -59,10 +59,10 @@ def niche_finder(sp, artist, artist_list, min_follower_threshold):
 
 
 
-def artist_dossier(artist_dict):
-    print(f'Your niche artist is {artist_dict['name']} with {artist_dict['followers']['total']} followers.')
-    print(artist_dict['external_urls']['spotify'])
-    print(f'Genres (if any): {artist_dict['genres']}')
+# def artist_dossier(artist_dict):
+#     print(f'Your niche artist is {artist_dict['name']} with {artist_dict['followers']['total']} followers.')
+#     print(artist_dict['external_urls']['spotify'])
+#     print(f'Genres (if any): {artist_dict['genres']}')
     
 # test: yeat - returns Kanni with 41 followers
 # print(nichify('3qiHUAX7zY4Qnjx8TNUzVx'))
