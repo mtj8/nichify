@@ -1,35 +1,38 @@
 {% extends "layout.html" %}
         {% block content %}
-        <p>nichify: the Spotify niche artist finder</p>
-        <form action="/" method="post">
-            <input type="text" name="nichify_artist" placeholder="lfg">
+        <p class="top">nichify: the Spotify niche artist finder</p>
+        <form action="/" method="post" class="top">
+            <input type="text" name="nichify_artist" placeholder="Spotify ID here">
             <button type="submit">nichify</button>
         </form>
 
         {% if results %}
-        <h2>Recommendations for {{ results[0]['name'] }} ({{ results[0]['followers']['total'] }} followers):</h2>
-        <h3>(each tier will have less followers)</h3>
+        <h2 class="top">Recommendations for {{ results[0]['name'] }} ({{ results[0]['followers']['total'] }} followers):</h2>
+        <h3 class="top">(each tier will have less followers)</h3>
         <!-- TODO: Recursive listing - will require backend work -->
         <ul>
             {% for result in results[1:] %}
                 <li>
-                    <a href={{ result['external_urls']['spotify'] }} target="_blank" rel="noreferrer noopener"> {{ result['name'] }} </a>
-                    | {{ result['followers']['total'] }} followers
-                    <ul>
-                        {% if not result['genres'] %}
-                            <li>No genres found</li>
-                        {% else %}
-                            <li>Genres: 
-                                {% for genre in result['genres'] %}
-                                    {% if loop.last %}
-                                        {{ genre }}
-                                    {% else %}
-                                        {{ genre }}, 
-                                    {% endif %}
-                                {% endfor %}
-                            </li>
-                        {% endif %}
-                    </ul>
+                    <img src={{ result['images'][0]['url'] }} alt="Image of {{ result }}" class="artist-image">
+                    <div>
+                        <h5> <a href={{ result['external_urls']['spotify'] }} target="_blank" rel="noreferrer noopener"> {{ result['name'] }} </a>
+                        | {{ result['followers']['total'] }} followers </h5>
+                        <ul>
+                            {% if not result['genres'] %}
+                                <li>No genres found</li>
+                            {% else %}
+                                <li>Genres: 
+                                    {% for genre in result['genres'] %}
+                                        {% if loop.last %}
+                                            {{ genre }}
+                                        {% else %}
+                                            {{ genre }}, 
+                                        {% endif %}
+                                    {% endfor %}
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </li>
                 <br>
             {% endfor %}
