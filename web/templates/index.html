@@ -13,7 +13,11 @@
         <ul>
             {% for result in results[1:] %}
                 <li>
-                    <img src={{ result['images'][0]['url'] }} alt="Image of {{ result }}" class="artist-image">
+                    {% if result['images'] | length > 0 %}
+                        <img src={{ result['images'][0]['url'] }} alt="Image of {{ result }}" class="artist-image">
+                    {% else %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Solid_white.png?20060513000852" alt="Image broke" class="artist-image">
+                    {% endif %}
                     <div>
                         <h5> <a href={{ result['external_urls']['spotify'] }} target="_blank" rel="noreferrer noopener"> {{ result['name'] }} </a>
                         | {{ result['followers']['total'] }} followers </h5>

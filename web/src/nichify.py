@@ -40,7 +40,7 @@ def niche_finder(sp, artist, artist_list, min_follower_threshold):
     else:
         artist_list += [artist_result]
         related_artists_results = sp.artist_related_artists(artist)
-        print(f"{artist_result['name']}")
+        print(f"{artist_result['name']} | {artist_result['id']}")
         
         new_artists_dict = {}
         for i, new_artist in enumerate(related_artists_results['artists']):
