@@ -16,5 +16,7 @@ def index():
         return render_template('index.html', query=query, results=results)
     return render_template('index.html')
 
+from waitress import serve
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(host="0.0.0.0", port=10000, debug=True)
+    serve(app, host='0.0.0.0', port=10000)
