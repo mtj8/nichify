@@ -8,8 +8,6 @@ def index():
     if request.method == 'POST':
         query = request.form['nichify_artist']
         
-        # TODO: add regex for the query
-        
         results = nichify.nichify(query)
         # print(results)
         
